@@ -1,0 +1,116 @@
+{
+  "categories": [
+    {
+      "id": 80877,
+      "name": "Appetizers",
+      "description": "",
+      "items": [
+        {
+          "id": 132548,
+          "name": "French Fries",
+          "description": "Custom premium cut by farm frites. Add melted cheese for 7LE - chili con carne for 9LE",
+          "price": 54.834
+        },
+        {
+          "id": 655881,
+          "name": "Nacho Chips & Salsa",
+          "description": "Homemade crispy nacho chips served with fresh salsa dip",
+          "price": 54.834
+        },
+        {
+          "id": 655882,
+          "name": "Sweet Potato Fries",
+          "description": "Served with hot mayo dip",
+          "price": 54.834
+        },
+        {
+          "id": 655883,
+          "name": "Seasoned Wedges",
+          "description": "Served with garlic mayo dip",
+          "price": 54.834
+        },
+        {
+          "id": 132565,
+          "name": "Chili Cheese Fries",
+          "description": "French fries, topped with chili con carne & melted cheddar cheese, served with sour cream and pickled jalapenos",
+          "price": 54.834
+        },
+        {
+          "id": 655884,
+          "name": "Potato Skins",
+          "description": "Loaded with cheese & chili beef ( served with sour cream)",
+          "price": 54.834
+        },
+        {
+          "id": 132549,
+          "name": "Onion Rings",
+          "description": "",
+          "price": 54.834
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "description": "This is salad category description",
+      "items": [
+        {
+          "id": 655880,
+          "name": "BLT Salad",
+          "description": "Grilled bacon , lettuce , tomatoes with ranch sauce",
+          "price": 34.834
+        },
+        {
+          "id": 132570,
+          "name": "Caesar Salad",
+          "description": "Lettuce, Parmesan cheese, Croutons & Caesar dressing",
+          "price": 34.834
+        },
+        {
+          "id": 132574,
+          "name": "Garden Salad",
+          "description": "Mixed greens and fresh garden selections tossed in vinaigrette dressing",
+          "price": 34.834
+        },
+        {
+          "id": 164438,
+          "name": "Rocket Mushroom Salad",
+          "description": "Rocket leaves, fresh mushrooms, Parmesan cheese, Balsamic dressing",
+          "price": 34.834
+        }
+      ],
+      "id": 21281
+    },
+    {
+      "name": "test cat",
+      "description": "test cat",
+      "items": [
+        {
+          "id": "d2afbccf-4681-431e-b0f9-1eb8fac32bf5",
+          "name": "item 1",
+          "price": "123",
+          "description": "item 1 desc"
+        }
+      ],
+      "id": 80878
+    },
+    {
+      "name": "category after splitting ",
+      "description": "category after splitting ",
+      "items": [
+        {
+          "id": "5a79d3e1-eb8b-42e1-b56d-72071a575672",
+          "name": "12345",
+          "price": "12345",
+          "description": "12345"
+        }
+      ],
+      "id": 80879
+    },
+    {
+      "name": "ttt",
+      "description": "ttt",
+      "items": [],
+      "id": 80880
+    }
+  ]
+}

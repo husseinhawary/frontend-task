@@ -1,0 +1,12 @@
+.card {
+  min-width: 100%;
+}
+
+.card-body section {
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card-body{
+    margin-bottom: 30px;
+}

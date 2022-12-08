@@ -1,0 +1,41 @@
+.cat-list-section {
+  flex: 3;
+  margin-right: 100px;
+  padding-top: 5px;
+}
+
+.cat-list-title {
+  color: #009688;
+}
+
+.cat-description, .cat-item-description {
+    background-color: #eee !important;
+  }
+
+  .group-btns {
+    margin-top: -60px !important;
+  }
+
+  .list-cats {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .cat-item-price {
+    float: right !important;
+    margin-bottom: 10px !important;
+    margin-top: -5px !important;
+  }
+
+  /* .cat-item-description {
+    background-color: #eee !important;
+  } */
+
+  .cat-item {
+    font-size: 16px;
+    font-style: italic;
+  }
+
+  .no-categories{
+    text-align: center;
+  }
