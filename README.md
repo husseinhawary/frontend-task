@@ -8,7 +8,7 @@ used:
 - react-semantic-ui.
 - json server and run it on port 4000
 - fetch
-- react css component
+- css modules
 
 completed:
 
