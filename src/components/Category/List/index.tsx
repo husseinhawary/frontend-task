@@ -1,14 +1,11 @@
+import { useContext } from "react";
 import { Form } from "formsy-semantic-ui-react";
-import {
-  Button,
-  Label,
-  Modal,
-  Segment,
-} from "semantic-ui-react";
+import { Button, Label, Modal, Segment } from "semantic-ui-react";
 import Card from "../../UI/Card";
 
 import styles from "./category-list.module.css";
 import AddItem from "./Item";
+import AuthContext from "../../../store/auth-context";
 
 const CategoriesList = (props) => {
   const {
@@ -26,75 +23,81 @@ const CategoriesList = (props) => {
     selectedCategory,
     setUpdateCatName,
     setUpdateCatDescription,
-    userLoggedIn,
     isLoading,
   } = props;
 
+  const authCtx = useContext(AuthContext);
+
+  const isLoggedIn = authCtx.isLoggedIn;
+
   const errorLabel = <Label color="red" pointing />;
-  
+
   return (
     <section className={styles["cat-list-section"]}>
       <h1 className={styles["cat-list-title"]}>Menu Data</h1>
 
       {/* List of Categories */}
 
-      { categories.length > 0 ?
-          categories.map((cat) => {
-            return (
-              <Segment loading={isLoading}>
-                <Card
-                  key={cat.id}
-                  className={styles["list-cats"]}
-                  title={cat.name}
-                >
-                  <>
-                    {userLoggedIn && (
-                      <Button.Group
-                        className={styles["group-btns"]}
-                        floated="right"
-                      >
-                        <Button
-                          icon="pencil"
-                          onClick={() => {
-                            onEditCategory({ ...cat });
-                          }}
-                        ></Button>
-                        <Button.Or />
-                        <Button
-                          positive
-                          icon="trash alternate outline"
-                          onClick={() => onDeleteCategory(cat)}
-                        ></Button>
-                      </Button.Group>
-                    )}
-                    <Segment className={styles["cat-description"]}>
-                      <article>
-                        <h5>Description</h5>
-                        {cat.description ? <p>{cat.description}</p>: <h5>No data available !</h5>}
-                      </article>
-                    </Segment>
+      {categories.length > 0 ? (
+        categories.map((cat) => {
+          return (
+            <Segment loading={isLoading}>
+              <Card
+                key={cat.id}
+                className={styles["list-cats"]}
+                title={cat.name}
+              >
+                <>
+                  {isLoggedIn && (
+                    <Button.Group
+                      className={styles["group-btns"]}
+                      floated="right"
+                    >
+                      <Button
+                        icon="pencil"
+                        onClick={() => {
+                          onEditCategory({ ...cat });
+                        }}
+                      ></Button>
+                      <Button.Or />
+                      <Button
+                        positive
+                        icon="trash alternate outline"
+                        onClick={() => onDeleteCategory(cat)}
+                      ></Button>
+                    </Button.Group>
+                  )}
 
-                    {/* Add Item */}
-
+                  <Segment className={styles["cat-description"]}>
+                    <article>
+                      <h5>Description</h5>
+                      {cat.description ? (
+                        <p>{cat.description}</p>
+                      ) : (
+                        <h5>No data available !</h5>
+                      )}
+                    </article>
+                  </Segment>
+                  {/* Add Item */}
+                  {isLoggedIn && (
                     <AddItem
                       cat={cat}
                       onAddCategoryItem={onAddCategoryItem}
                       setItemName={setItemName}
                       setItemPrice={setItemPrice}
                       setItemDescription={setItemDescription}
-                      userLoggedIn={userLoggedIn}
                     />
-
-                    {/* List of Items */}
-
-                    {cat.items.length > 0 ? cat.items.map((item: any) => (
+                  )}
+                  {/* List of Items */}
+                  {cat.items.length > 0 ? (
+                    cat.items.map((item: any) => (
                       <Segment>
                         <Card
                           key={item.id}
                           className={styles["cat-item"]}
                           title={item.name}
                         >
-                          {userLoggedIn && (
+                          {isLoggedIn && (
                             <Button.Group
                               className={styles["group-btns"]}
                               floated="right"
@@ -122,12 +125,18 @@ const CategoriesList = (props) => {
                           </Label>
                         </Card>
                       </Segment>
-                    )): (<h2 className={styles["no-categories"]}>No Found Items!</h2>)}
-                  </>
-                </Card>
-              </Segment>
-            );
-          }): (<h2 className={styles["no-categories"]}>No Found Categories!</h2>)}
+                    ))
+                  ) : (
+                    <h2 className={styles["no-categories"]}>No Found Items!</h2>
+                  )}
+                </>
+              </Card>
+            </Segment>
+          );
+        })
+      ) : (
+        <h2 className={styles["no-categories"]}>No Found Categories!</h2>
+      )}
 
       {/* Edit Category Modal */}
 

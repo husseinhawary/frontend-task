@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import "semantic-ui-css/semantic.min.css";
 
 import swal from "sweetalert";
 import { v4 as uuidv4 } from "uuid";
+import AuthContext from "../../store/auth-context";
 
 import "./category.css";
 import AddCategory from "./Form";
 import CategoriesList from "./List";
-import { Button, Icon, Menu } from "semantic-ui-react";
-import logo from "../../assets/logo.jpeg";
-
 
 const Category = () => {
   const [categories, setCategories] = useState<any[]>([]);
@@ -27,17 +25,19 @@ const Category = () => {
   const [itemDescription, setItemDescription] = useState("");
   const [itemPrice, setItemPrice] = useState("");
 
-  const [userIsLoggedIn, setUserIsLoggedin] = useState(false);
-
   const [isLoading, setIsLoading] = useState(false);
   const catItems: [] = [];
+
+  const authCtx = useContext(AuthContext);
+
+  const isLoggedIn = authCtx.isLoggedIn;
 
   useEffect(() => {
     getAllCategories();
   }, []);
 
   const getAllCategories = () => {
-     setIsLoading(true);
+    setIsLoading(true);
     fetch("http://localhost:4000/categories", {
       method: "GET",
       headers: {
@@ -48,11 +48,11 @@ const Category = () => {
       .then((data) => {
         setCategories(data);
       });
-      setIsLoading(false)
+    setIsLoading(false);
   };
 
   const addCategoryHandler = () => {
-    setIsLoading(true)
+    setIsLoading(true);
     fetch("http://localhost:4000/categories", {
       method: "POST",
       headers: {
@@ -72,7 +72,7 @@ const Category = () => {
         getAllCategories();
       });
 
-      setIsLoading(false)
+    setIsLoading(false);
   };
 
   const updateCategoryHandler = () => {
@@ -189,38 +189,19 @@ const Category = () => {
       });
   };
 
-  const handleUserLogin = () => {
-    setUserIsLoggedin((prevState) => !prevState);
-    console.log(userIsLoggedIn);
-  };
-
   return (
     <div className="container">
-
-      <header>
-        <div className="logo">
-          <img src={logo} alt="there isn't logo" />
-        </div>
-        <div className="account">
-          <Button type="submit" onClick={handleUserLogin}>Admin</Button>
-          {userIsLoggedIn && <Menu compact color="grey">
-            <Menu.Item as="a">
-              <Icon name="user outline" /> Welcome Admin
-            </Menu.Item>
-          </Menu>}
-        </div>
-      </header>
-
       <section className="menu-cat-section">
-        <AddCategory
-          onSubmit={addCategoryHandler}
-          setCatName={setCatName}
-          catName={catName}
-          setCatDescription={setCatDescription}
-          catDescription={catDescription}
-          userLoggedIn={userIsLoggedIn}
-          isLoading={isLoading}
-        />
+        {isLoggedIn && (
+          <AddCategory
+            onSubmit={addCategoryHandler}
+            setCatName={setCatName}
+            catName={catName}
+            setCatDescription={setCatDescription}
+            catDescription={catDescription}
+            isLoading={isLoading}
+          />
+        )}
 
         <CategoriesList
           categories={categories}
@@ -243,7 +224,6 @@ const Category = () => {
           selectedCategory={selectedCategory}
           setUpdateCatName={setUpdateCatName}
           setUpdateCatDescription={setUpdateCatDescription}
-          userLoggedIn={userIsLoggedIn}
           isLoading={isLoading}
         />
       </section>

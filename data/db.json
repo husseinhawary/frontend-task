@@ -112,5 +112,17 @@
       "items": [],
       "id": 80880
     }
+  ],
+  "users": [
+    {
+      "email": "test@test.com",
+      "password": "$2a$10$/5Rkda3Gqh7pfQUZsXch.ulnkca1AE8BgMOBW5dESXMdRYDAh6TWa",
+      "id": 2
+    },
+    {
+      "email": "hussein@elmenus.com",
+      "password": "$2a$10$6nl.SPTedSMcyKX8WgJolOvvyq66xxI/W.KXyt6cRPBN1UEfTNJ.e",
+      "id": 3
+    }
   ]
 }

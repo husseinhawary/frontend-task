@@ -10,7 +10,6 @@ const AddItem = (props) => {
     setItemName,
     setItemPrice,
     setItemDescription,
-    userLoggedIn
   } = props;
 
   const errorLabel = <Label color="red" pointing />;
@@ -61,7 +60,7 @@ const AddItem = (props) => {
               errorLabel={errorLabel}
             />
           </Form.Field>
-          {userLoggedIn && <Button type="submit">Save</Button>}
+           <Button type="submit">Save</Button>
         </Form>
       </Segment>
     </>

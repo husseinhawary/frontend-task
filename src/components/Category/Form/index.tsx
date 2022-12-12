@@ -11,7 +11,6 @@ const AddCategory = (props) => {
     catName,
     setCatDescription,
     catDescription,
-    userLoggedIn,
     isLoading
   } = props;
 
@@ -50,7 +49,7 @@ const AddCategory = (props) => {
               errorLabel={errorLabel}
             />
           </Form.Field>
-          {userLoggedIn && <Button type="submit">Save</Button>}
+          <Button type="submit">Save</Button>
         </Form>
       </Segment>
     </aside>
